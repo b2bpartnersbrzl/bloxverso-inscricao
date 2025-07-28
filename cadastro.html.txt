@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscrição – BloxVerso Con</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <img src="assets/logo.png" alt="Logo BloxVerso Con" class="logo">
+    <h1>Formulário de Inscrição</h1>
+
+    <form name="inscricao" method="POST" data-netlify="true">
+      <input type="text" name="nome" placeholder="Nome completo" required>
+
+      <input type="email" name="email" placeholder="E-mail para contato" required>
+
+      <label for="perfil">Perfil do participante:</label>
+      <select name="perfil" id="perfil" required>
+        <option value="">Selecione...</option>
+        <option value="Jogador">Jogador</option>
+        <option value="Criador de conteúdo">Criador de conteúdo</option>
+        <option value="Responsável legal">Responsável legal</option>
+        <option value="Outro">Outro</option>
+      </select>
+
+      <label for="idade">Idade ou faixa etária:</label>
+      <input type="number" name="idade" id="idade" placeholder="Idade" min="1" required oninput="verificarIdade(this.value)">
+
+      <div id="nota-seguranca" style="display: none; font-size: 0.9rem; color: #555; margin-bottom: 1rem;">
+        * Participantes entre 12 e 17 anos devem estar acompanhados por um responsável no evento.
+      </div>
+
+      <input type="text" name="whatsapp" placeholder="WhatsApp (opcional)">
+
+      <input type="text" name="instagram" placeholder="Instagram (opcional)">
+      <input type="text" name="tiktok" placeholder="TikTok (opcional)">
+      <input type="text" name="roblox" placeholder="Perfil no Roblox (opcional)">
+
+      <label class="checkbox">
+        <input type="checkbox" name="consentimento" required>
+        Autorizo o uso das informações fornecidas exclusivamente para fins de personalização da experiência no evento BloxVerso Con, conforme política de privacidade.
+      </label>
+
+      <button type="submit">Enviar inscrição</button>
+    </form>
+  </div>
+
+  <script>
+    function verificarIdade(valor) {
+      const nota = document.getElementById('nota-seguranca');
+      if (valor >= 12 && valor < 18) {
+        nota.style.display = 'block';
+      } else {
+        nota.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
