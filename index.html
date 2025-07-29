@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BloxVerso Con – Termos de Participação</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <img src="assets/logo.png" alt="Logo BloxVerso Con" class="logo">
+
+    <h1>Política de Participação</h1>
+    <div class="termos">
+      <p>Antes de se inscrever, leia atentamente:</p>
+      <ul>
+        <li>Você deve ter entre 6 e 17 anos para participar.</li>
+        <li>É necessário o consentimento dos pais ou responsáveis para menores de idade.</li>
+        <li>O evento é gratuito, mas as vagas são limitadas.</li>
+        <li>O uso de linguagem ofensiva ou comportamentos inapropriados resultará em desclassificação.</li>
+        <li>Ao continuar, você autoriza o uso de sua imagem em registros do evento.</li>
+      </ul>
+    </div>
+
+    <label class="checkbox">
+      <input type="checkbox" id="aceite">
+      Declaro que li e aceito os termos acima.
+    </label>
+
+    <button id="continuar" disabled>Continuar</button>
+  </div>
+
+  <script>
+    const aceite = document.getElementById('aceite');
+    const botao = document.getElementById('continuar');
+
+    aceite.addEventListener('change', function() {
+      botao.disabled = !this.checked;
+    });
+
+    botao.addEventListener('click', function() {
+      window.location.href = 'cadastro.html';
+    });
+  </script>
+
+</body>
+</html>
