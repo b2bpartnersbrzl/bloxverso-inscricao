@@ -1,20 +1,31 @@
+/* Fonte padrão */
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #0d0d0d;
+  background-color: #0d0d0d; /* fundo preto absoluto */
   color: #ffffff;
 }
 
+/* Container principal */
 .container {
   max-width: 500px;
   margin: 0 auto;
   padding: 40px 20px;
-  background-color: #1a1a1a;
+  background-color: #1a1a1a; /* cinza escuro */
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
   text-align: center;
 }
 
+/* Logo principal */
+.logo-topo {
+  display: block;
+  margin: 0 auto 20px auto;
+  max-width: 160px;
+  height: auto;
+}
+
+/* Ícone de segurança */
 .icone-topo {
   display: block;
   margin: 0 auto 30px auto;
@@ -22,6 +33,7 @@ body {
   height: auto;
 }
 
+/* Títulos */
 h1 {
   font-size: 1.6rem;
   margin-bottom: 20px;
@@ -34,6 +46,7 @@ h2 {
   color: #ffe600;
 }
 
+/* Listas */
 ul {
   list-style-type: disc;
   text-align: left;
@@ -41,6 +54,7 @@ ul {
   margin-bottom: 20px;
 }
 
+/* Botões */
 .botao, .botao-secundario {
   display: inline-block;
   margin-top: 30px;
@@ -55,6 +69,37 @@ ul {
   font-family: 'Roboto', sans-serif;
 }
 
+/* Hover dos botões */
 .botao:hover, .botao-secundario:hover {
   background-color: #fff200;
+}
+
+/* Responsividade adicional */
+@media (max-width: 768px) {
+  .container {
+    padding: 40px 20px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-topo {
+    max-width: 120px;
+  }
+
+  .icone-topo {
+    width: 48px;
+  }
+
+  .botao, .botao-secundario {
+    width: 100%;
+    padding: 12px 0;
+  }
 }
