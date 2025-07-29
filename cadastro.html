@@ -3,54 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BloxVerso Con – Inscrição</title>
+  <title>Inscrição – BloxVerso Con</title>
   <link href="style.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
     <img src="assets/logo_forms.png" alt="Logo BloxVerso Con" class="logo" />
-
     <h1>Formulário de Inscrição</h1>
 
-    <form name="cadastro" method="POST" data-netlify="true" action="obrigado.html">
-      <input type="hidden" name="form-name" value="cadastro" />
+    <form name="inscricao" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="inscricao" />
 
-      <label for="nome">Nome completo *</label>
+      <label for="nome">Nome completo*</label>
       <input type="text" id="nome" name="nome" required />
 
-      <label for="email">E-mail *</label>
+      <label for="email">E-mail*</label>
       <input type="email" id="email" name="email" required />
 
-      <label for="perfil">Perfil do participante *</label>
+      <label for="perfil">Perfil do participante*</label>
       <select id="perfil" name="perfil" required>
-        <option value="">Selecione...</option>
+        <option value="">Selecione</option>
         <option value="Jogador">Jogador</option>
         <option value="Criador de conteúdo">Criador de conteúdo</option>
         <option value="Responsável legal">Responsável legal</option>
         <option value="Outro">Outro</option>
       </select>
 
-      <label for="idade">Idade ou faixa etária *</label>
-      <input type="text" id="idade" name="idade" required />
+      <label for="idade">Idade ou faixa etária*</label>
+      <input type="text" id="idade" name="idade" required placeholder="Ex: 10 anos ou 14–17" />
 
       <label for="whatsapp">WhatsApp (opcional)</label>
-      <input type="tel" id="whatsapp" name="whatsapp" />
+      <input type="text" id="whatsapp" name="whatsapp" placeholder="(xx) xxxxx-xxxx" />
 
       <label for="instagram">Instagram (opcional)</label>
-      <input type="text" id="instagram" name="instagram" />
+      <input type="text" id="instagram" name="instagram" placeholder="@usuario" />
 
       <label for="tiktok">TikTok (opcional)</label>
-      <input type="text" id="tiktok" name="tiktok" />
+      <input type="text" id="tiktok" name="tiktok" placeholder="@usuario" />
 
-      <label for="perfilroblox">Perfil Roblox (opcional)</label>
-      <input type="text" id="perfilroblox" name="perfilroblox" />
+      <label for="roblox">Perfil Roblox (opcional)</label>
+      <input type="text" id="roblox" name="roblox" placeholder="URL ou nickname" />
 
       <div class="checkbox-container">
-        <label>
-          <input type="checkbox" name="consentimento" required />
-          Autorizo o uso das informações fornecidas exclusivamente para fins de personalização da experiência no evento BloxVerso Con, conforme política de privacidade.
-        </label>
+        <input type="checkbox" id="consentimento" name="consentimento" required />
+        <label for="consentimento">Autorizo o uso das informações fornecidas exclusivamente para fins de personalização da experiência no evento BloxVerso Con, conforme política de privacidade.</label>
       </div>
 
       <button type="submit">Enviar inscrição</button>
