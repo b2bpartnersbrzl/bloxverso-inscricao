@@ -11,8 +11,7 @@
   <div class="container">
     <img src="assets/logo_forms.png" alt="Logo BloxVerso Con" class="logo" />
     <h1>Formulário de Inscrição</h1>
-
-    <form name="inscricao" method="POST" data-netlify="true">
+    <form name="inscricao" method="POST" data-netlify="true" action="/obrigado.html">
       <input type="hidden" name="form-name" value="inscricao" />
 
       <label for="nome">Nome completo*</label>
@@ -23,7 +22,7 @@
 
       <label for="perfil">Perfil do participante*</label>
       <select id="perfil" name="perfil" required>
-        <option value="">Selecione</option>
+        <option value="">Selecione...</option>
         <option value="Jogador">Jogador</option>
         <option value="Criador de conteúdo">Criador de conteúdo</option>
         <option value="Responsável legal">Responsável legal</option>
@@ -31,23 +30,25 @@
       </select>
 
       <label for="idade">Idade ou faixa etária*</label>
-      <input type="text" id="idade" name="idade" required placeholder="Ex: 10 anos ou 14–17" />
+      <input type="text" id="idade" name="idade" required />
 
       <label for="whatsapp">WhatsApp (opcional)</label>
-      <input type="text" id="whatsapp" name="whatsapp" placeholder="(xx) xxxxx-xxxx" />
+      <input type="text" id="whatsapp" name="whatsapp" />
 
       <label for="instagram">Instagram (opcional)</label>
-      <input type="text" id="instagram" name="instagram" placeholder="@usuario" />
+      <input type="text" id="instagram" name="instagram" />
 
       <label for="tiktok">TikTok (opcional)</label>
-      <input type="text" id="tiktok" name="tiktok" placeholder="@usuario" />
+      <input type="text" id="tiktok" name="tiktok" />
 
       <label for="roblox">Perfil Roblox (opcional)</label>
-      <input type="text" id="roblox" name="roblox" placeholder="URL ou nickname" />
+      <input type="text" id="roblox" name="roblox" />
 
       <div class="checkbox-container">
-        <input type="checkbox" id="consentimento" name="consentimento" required />
-        <label for="consentimento">Autorizo o uso das informações fornecidas exclusivamente para fins de personalização da experiência no evento BloxVerso Con, conforme política de privacidade.</label>
+        <label>
+          <input type="checkbox" name="consentimento" required />
+          Autorizo o uso das informações fornecidas exclusivamente para fins de personalização da experiência no evento BloxVerso Con, conforme política de privacidade.
+        </label>
       </div>
 
       <button type="submit">Enviar inscrição</button>
