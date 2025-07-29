@@ -1,46 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BloxVerso Con – Segurança</title>
-  <link href="style.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <img src="assets/logo_forms.png" alt="Logo BloxVerso Con" class="logo" />
+    
+    <!-- Ícone SVG -->
+    <img src="assets/icone_seguranca.svg" alt="Ícone de Segurança" class="icone-topo">
 
-    <h1>🔒 Segurança em Primeiro Lugar</h1>
+    <!-- Título -->
+    <h1>Segurança em Primeiro Lugar</h1>
 
-    <p>O BloxVerso Con é um evento criado para reunir a comunidade Roblox em experiências seguras, criativas e inspiradoras. Nosso compromisso é claro: antes de oferecer entretenimento, oferecemos proteção.</p>
+    <!-- Bloco resumo -->
+    <div id="resumo">
+      <p>O BloxVerso Con é um evento criado para reunir a comunidade Roblox em experiências seguras, criativas e inspiradoras.</p>
+      <p>Nosso compromisso é claro: antes de oferecer entretenimento, oferecemos proteção.</p>
+      <button onclick="expandirTexto()" class="botao-secundario">Leia mais</button>
+    </div>
 
-    <p>Sabemos que muitos dos participantes são menores de idade, e isso exige de nós total responsabilidade. Por isso, adotamos um sistema de pré-inscrição com camadas adicionais de segurança e validação.</p>
+    <!-- Bloco completo (inicialmente oculto) -->
+    <div id="completo" style="display: none;">
+      <p>Sabemos que muitos dos participantes são menores de idade, e isso exige de nós total responsabilidade. Por isso, adotamos um sistema de pré-inscrição com camadas adicionais de segurança e validação.</p>
 
-    <h2>✅ Por que o cadastro é detalhado?</h2>
-    <ul>
-      <li>Para proteger menores de perfis mal-intencionados</li>
-      <li>Para garantir que responsáveis legais sejam identificados, quando necessário</li>
-      <li>Para permitir a personalização da experiência conforme a faixa etária e perfil</li>
-      <li>Para cumprir boas práticas de segurança digital e privacidade de dados</li>
-    </ul>
+      <h2>Por que o cadastro é detalhado?</h2>
+      <ul>
+        <li>Para proteger menores de perfis mal-intencionados</li>
+        <li>Para garantir que responsáveis legais sejam identificados</li>
+        <li>Para personalizar a experiência conforme idade e perfil</li>
+        <li>Para cumprir boas práticas de privacidade de dados</li>
+      </ul>
 
-    <h2>🛡️ O que exigimos?</h2>
-    <ul>
-      <li>Nome completo e e-mail válido</li>
-      <li>Idade ou faixa etária precisa</li>
-      <li>Perfil do participante (jogador, criador, responsável etc.)</li>
-      <li>Aceite do uso dos dados exclusivamente para fins de personalização da experiência no evento</li>
-      <li>Nos casos de menores de 18 anos, será obrigatória a identificação do responsável legal</li>
-      <li>Participantes maiores de idade terão campos adicionais para garantir verificação reforçada</li>
-    </ul>
+      <h2>O que exigimos?</h2>
+      <ul>
+        <li>Nome completo e e-mail válido</li>
+        <li>Idade ou faixa etária precisa</li>
+        <li>Perfil do participante</li>
+        <li>Consentimento de uso de dados para fins do evento</li>
+        <li>Responsável legal em caso de menores de 18 anos</li>
+      </ul>
 
-    <h2>🔐 Como protegemos seus dados?</h2>
-    <p>Todos os dados enviados são tratados de forma confidencial, não são compartilhados com terceiros e são utilizados exclusivamente para fins organizacionais do BloxVerso Con.</p>
+      <h2>Como protegemos seus dados?</h2>
+      <p>Todos os dados são confidenciais, não são compartilhados e são utilizados exclusivamente para a organização do BloxVerso Con.</p>
 
-    <p>Se você concorda com nossos termos e entende a importância de um ambiente seguro para todos, siga para a pré-inscrição.</p>
-
-    <a href="cadastro.html" class="btn">Fazer minha inscrição</a>
+      <a href="cadastro.html" class="botao">Prosseguir para pré-inscrição</a>
+    </div>
   </div>
+
+  <script>
+    function expandirTexto() {
+      document.getElementById('resumo').style.display = 'none';
+      document.getElementById('completo').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
