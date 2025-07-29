@@ -3,70 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inscrição – BloxVerso Con</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <title>Pré-inscrição – BloxVerso Con</title>
+  <link href="style.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="form-container">
+  <div class="container">
     <img src="assets/logo_forms.png" alt="Logo BloxVerso Con" class="logo" />
+    <h1>Formulário de Pré-inscrição</h1>
 
-    <form name="inscricao" method="POST" data-netlify="true">
-      <label for="nome">Nome completo</label>
+    <form name="cadastro" method="POST" data-netlify="true">
+
+      <label for="nome">Nome completo*</label>
       <input type="text" id="nome" name="nome" required />
 
-      <label for="email">E-mail</label>
+      <label for="email">E-mail*</label>
       <input type="email" id="email" name="email" required />
 
-      <label for="perfil">Perfil do participante</label>
+      <label for="perfil">Perfil do participante*</label>
       <select id="perfil" name="perfil" required>
-        <option value="">Selecione</option>
+        <option value="">Selecione...</option>
         <option value="Jogador">Jogador</option>
         <option value="Criador de conteúdo">Criador de conteúdo</option>
         <option value="Responsável legal">Responsável legal</option>
         <option value="Outro">Outro</option>
       </select>
 
-      <label for="idade">Idade ou faixa etária</label>
-      <input type="number" id="idade" name="idade" required min="1" max="120" />
+      <label for="idade">Idade ou faixa etária*</label>
+      <input type="number" id="idade" name="idade" min="1" required />
 
-      <div id="nota-seguranca" class="aviso" style="display: none;">
-        Participantes de 12 a 17 anos devem estar acompanhados por responsável. Menores de 12 devem aguardar liberação especial.
+      <!-- Placeholder para nota de segurança ou campo extra para responsável -->
+      <div id="avisoIdade" style="display: none;">
+        <p><strong>Nota:</strong> Participantes menores de idade precisam da supervisão de um responsável legal.</p>
       </div>
 
       <label for="whatsapp">WhatsApp (opcional)</label>
       <input type="tel" id="whatsapp" name="whatsapp" />
 
       <label for="instagram">Instagram (opcional)</label>
-      <input type="text" id="instagram" name="instagram" placeholder="@seuusuario" />
+      <input type="text" id="instagram" name="instagram" placeholder="@usuario ou URL" />
 
       <label for="tiktok">TikTok (opcional)</label>
-      <input type="text" id="tiktok" name="tiktok" placeholder="@seuusuario" />
+      <input type="text" id="tiktok" name="tiktok" placeholder="@usuario ou URL" />
 
       <label for="roblox">Perfil Roblox (opcional)</label>
-      <input type="text" id="roblox" name="roblox" />
+      <input type="text" id="roblox" name="roblox" placeholder="@usuario ou URL" />
 
-      <label class="consentimento">
-        <input type="checkbox" name="consentimento" required />
-        Autorizo o uso das informações fornecidas exclusivamente para fins de personalização da experiência no evento BloxVerso Con, conforme política de privacidade.
-      </label>
+      <div class="checkbox-container">
+        <label>
+          <input type="checkbox" name="consentimento" required />
+          Autorizo o uso das informações fornecidas exclusivamente para fins de personalização da experiência no evento BloxVerso Con, conforme política de privacidade.
+        </label>
+      </div>
 
       <button type="submit">Enviar inscrição</button>
     </form>
   </div>
 
   <script>
-    const idadeInput = document.getElementById("idade");
-    const aviso = document.getElementById("nota-seguranca");
-
-    idadeInput.addEventListener("input", function () {
+    // Lógica condicional para faixa etária
+    document.getElementById('idade').addEventListener('input', function () {
+      const aviso = document.getElementById('avisoIdade');
       const idade = parseInt(this.value, 10);
-      if (idade >= 12 && idade <= 17) {
-        aviso.style.display = "block";
+      if (!isNaN(idade) && idade < 18) {
+        aviso.style.display = 'block';
       } else {
-        aviso.style.display = "none";
+        aviso.style.display = 'none';
       }
     });
   </script>
