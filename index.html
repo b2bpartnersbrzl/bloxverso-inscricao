@@ -3,33 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BloxVerso Con – Início</title>
+  <title>BloxVerso Con – Comunicado</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="container">
-    <img src="assets/logo.png" alt="BloxVerso Con" class="logo" />
-    <h1>Política de Participação</h1>
-    <ul class="termos">
-      <li>Evento voltado para pessoas de 6 a 17 anos.</li>
-      <li>Menores de idade devem estar acompanhados por responsável.</li>
-      <li>O evento é gratuito e as vagas são limitadas.</li>
-      <li>Autorização de uso de imagem será solicitada.</li>
-    </ul>
-    <label class="checkbox">
-      <input type="checkbox" id="aceite" />
-      Li e aceito os termos acima.
-    </label>
-    <button id="continuar" disabled>Continuar</button>
-  </div>
+  <div class="form-container">
+    <img src="assets/logo_forms.png" alt="Logo BloxVerso Con" class="logo" />
 
-  <script>
-    document.getElementById('aceite').addEventListener('change', function () {
-      document.getElementById('continuar').disabled = !this.checked;
-    });
-    document.getElementById('continuar').addEventListener('click', function () {
-      window.location.href = 'cadastro.html';
-    });
-  </script>
+    <h1>Segurança em Primeiro Lugar</h1>
+
+    <p>
+      O evento BloxVerso Con foi planejado para proporcionar uma experiência inesquecível e 100% segura para todos os participantes.
+    </p>
+    <ul>
+      <li>Ambiente supervisionado por adultos e monitores treinados.</li>
+      <li>Controle de acesso com credenciamento e pulseiras.</li>
+      <li>Espaço físico preparado para receber crianças e adolescentes com conforto.</li>
+      <li>Equipe de segurança presente durante todo o evento.</li>
+      <li>Uso de imagem será previamente autorizado pelos responsáveis.</li>
+    </ul>
+
+    <p>Nosso compromisso é com a tranquilidade de quem participa — e de quem confia.</p>
+
+    <a href="cadastro.html" class="botao-link">Fazer minha inscrição</a>
+  </div>
 </body>
 </html>
