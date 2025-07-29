@@ -3,24 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pré-inscrição – BloxVerso Con</title>
+  <title>BloxVerso Con – Inscrição</title>
   <link href="style.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
     <img src="assets/logo_forms.png" alt="Logo BloxVerso Con" class="logo" />
-    <h1>Formulário de Pré-inscrição</h1>
 
-    <form name="cadastro" method="POST" data-netlify="true">
+    <h1>Formulário de Inscrição</h1>
 
-      <label for="nome">Nome completo*</label>
+    <form name="cadastro" method="POST" data-netlify="true" action="obrigado.html">
+      <input type="hidden" name="form-name" value="cadastro" />
+
+      <label for="nome">Nome completo *</label>
       <input type="text" id="nome" name="nome" required />
 
-      <label for="email">E-mail*</label>
+      <label for="email">E-mail *</label>
       <input type="email" id="email" name="email" required />
 
-      <label for="perfil">Perfil do participante*</label>
+      <label for="perfil">Perfil do participante *</label>
       <select id="perfil" name="perfil" required>
         <option value="">Selecione...</option>
         <option value="Jogador">Jogador</option>
@@ -29,25 +31,20 @@
         <option value="Outro">Outro</option>
       </select>
 
-      <label for="idade">Idade ou faixa etária*</label>
-      <input type="number" id="idade" name="idade" min="1" required />
-
-      <!-- Placeholder para nota de segurança ou campo extra para responsável -->
-      <div id="avisoIdade" style="display: none;">
-        <p><strong>Nota:</strong> Participantes menores de idade precisam da supervisão de um responsável legal.</p>
-      </div>
+      <label for="idade">Idade ou faixa etária *</label>
+      <input type="text" id="idade" name="idade" required />
 
       <label for="whatsapp">WhatsApp (opcional)</label>
       <input type="tel" id="whatsapp" name="whatsapp" />
 
       <label for="instagram">Instagram (opcional)</label>
-      <input type="text" id="instagram" name="instagram" placeholder="@usuario ou URL" />
+      <input type="text" id="instagram" name="instagram" />
 
       <label for="tiktok">TikTok (opcional)</label>
-      <input type="text" id="tiktok" name="tiktok" placeholder="@usuario ou URL" />
+      <input type="text" id="tiktok" name="tiktok" />
 
-      <label for="roblox">Perfil Roblox (opcional)</label>
-      <input type="text" id="roblox" name="roblox" placeholder="@usuario ou URL" />
+      <label for="perfilroblox">Perfil Roblox (opcional)</label>
+      <input type="text" id="perfilroblox" name="perfilroblox" />
 
       <div class="checkbox-container">
         <label>
@@ -59,18 +56,5 @@
       <button type="submit">Enviar inscrição</button>
     </form>
   </div>
-
-  <script>
-    // Lógica condicional para faixa etária
-    document.getElementById('idade').addEventListener('input', function () {
-      const aviso = document.getElementById('avisoIdade');
-      const idade = parseInt(this.value, 10);
-      if (!isNaN(idade) && idade < 18) {
-        aviso.style.display = 'block';
-      } else {
-        aviso.style.display = 'none';
-      }
-    });
-  </script>
 </body>
 </html>
