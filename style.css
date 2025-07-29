@@ -1,13 +1,11 @@
-/* Reset e fonte */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
   background-color: #0d0d0d;
   color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* Container central */
 .container {
   max-width: 500px;
   margin: 0 auto;
@@ -18,97 +16,61 @@ body {
   text-align: center;
 }
 
-/* Logo */
 .logo-topo {
-  display: block;
-  margin: 0 auto 20px;
-  width: 160px;
-  height: auto;
+  width: 180px;
+  margin-bottom: 30px;
 }
 
-/* Ícone SVG */
-.icone-topo {
-  display: block;
-  margin: 0 auto 30px;
-  width: 64px;
-  height: auto;
-}
-
-/* Títulos */
-h1 {
-  font-size: 1.6rem;
-  color: #ffe600;
-  margin-bottom: 20px;
-}
-
-h2 {
-  font-size: 1.2rem;
-  color: #ffe600;
-  margin-top: 30px;
-}
-
-/* Texto e listas */
-p {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-ul {
-  text-align: left;
-  margin-left: 30px;
-  margin-bottom: 20px;
-  padding-left: 0;
-}
-
-ul li {
+h1, h2 {
+  font-weight: 700;
   margin-bottom: 10px;
 }
 
-/* Botões */
-.botao,
-.botao-secundario {
-  display: inline-block;
-  background-color: #ffe600;
-  color: #000;
-  font-weight: 700;
-  padding: 12px 24px;
-  text-decoration: none;
-  border: none;
-  border-radius: 8px;
-  margin-top: 30px;
-  cursor: pointer;
-  font-family: 'Roboto', sans-serif;
+p, ul {
+  font-weight: 400;
+  text-align: left;
 }
 
-.botao:hover,
-.botao-secundario:hover {
+ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.botao, .botao-secundario {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.botao {
+  background-color: #ffe600;
+  color: #000;
+}
+
+.botao:hover {
   background-color: #fff200;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .container {
-    padding: 30px 20px;
-  }
+.botao-secundario {
+  background-color: transparent;
+  color: #ffe600;
+  border: 2px solid #ffe600;
+}
 
-  .logo-topo {
-    width: 120px;
-  }
+.botao-secundario:hover {
+  background-color: #fff200;
+  color: #000;
+}
 
-  .icone-topo {
-    width: 48px;
-  }
-
-  h1 {
-    font-size: 1.4rem;
-  }
-
-  h2 {
-    font-size: 1.1rem;
-  }
-
-  .botao, .botao-secundario {
-    width: 100%;
-    padding: 12px 0;
-  }
+.conteudo-extra {
+  display: none;
+  margin-top: 30px;
+  text-align: left;
 }
