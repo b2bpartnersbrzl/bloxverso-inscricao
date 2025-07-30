@@ -6,16 +6,6 @@
   <title>Inscrição – BloxVerso Con</title>
   <link href="style.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="https://unpkg.com/imask"></script>
-  <style>
-    input:focus, select:focus {
-      box-shadow: 0 0 0 2px #ffe60088;
-      transition: box-shadow 0.2s ease;
-    }
-    input.erro {
-      border: 1px solid #ff4c4c !important;
-    }
-  </style>
   <script>
     function validarCPF(cpf) {
       cpf = cpf.replace(/[^\d]+/g, '');
@@ -62,21 +52,18 @@
 
       if (!regexNomeCompleto.test(nome)) {
         alert("Por favor, informe seu nome completo.");
-        document.getElementById("nome").focus();
         event.preventDefault();
         return false;
       }
 
-      if (!/^[\\w-.]+@[\\w-]+\\.[a-z]{2,}$/.test(email)) {
+      if (!/^[\w-.]+@[\w-]+\.[a-z]{2,}$/.test(email)) {
         alert("Por favor, informe um e-mail válido.");
-        document.getElementById("email").focus();
         event.preventDefault();
         return false;
       }
 
       if (idade >= 18 && !validarCPF(cpfMaior)) {
         alert("CPF inválido para participante maior de idade.");
-        document.getElementById("cpf_maior").focus();
         event.preventDefault();
         return false;
       }
@@ -84,23 +71,16 @@
       if (idade < 18) {
         if (!regexNomeCompleto.test(nomeResp)) {
           alert("Informe o nome completo do responsável.");
-          document.getElementById("nome_responsavel").focus();
           event.preventDefault();
           return false;
         }
         if (!validarCPF(cpfResp)) {
           alert("CPF do responsável inválido.");
-          document.getElementById("cpf_responsavel").focus();
           event.preventDefault();
           return false;
         }
       }
     }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      IMask(document.getElementById("cpf_maior"), { mask: '000.000.000-00' });
-      IMask(document.getElementById("cpf_responsavel"), { mask: '000.000.000-00' });
-    });
   </script>
 </head>
 <body>
