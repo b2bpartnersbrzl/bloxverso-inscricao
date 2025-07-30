@@ -69,6 +69,26 @@ input:focus, select:focus, textarea:focus {
   font-size: 14px;
 }
 
+.checkbox-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.checkbox-inline input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #ffe600;
+  margin: 0;
+  cursor: pointer;
+}
+
+.checkbox-inline span {
+  font-size: 14px;
+  color: #fff;
+}
+
 button, .btn {
   display: inline-block;
   background-color: #ffe600;
