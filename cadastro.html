@@ -56,7 +56,7 @@
         return false;
       }
 
-      if (!/^[\w-.]+@[\w-]+\.[a-z]{2,}$/.test(email)) {
+      if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/.test(email)) {
         alert("Por favor, informe um e-mail válido.");
         event.preventDefault();
         return false;
