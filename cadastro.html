@@ -6,12 +6,82 @@
   <title>Inscrição – BloxVerso Con</title>
   <link href="style.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <script>
+    function validarCPF(cpf) {
+      cpf = cpf.replace(/[^\d]+/g, '');
+      if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+      let soma = 0, resto;
+      for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+      resto = (soma * 10) % 11;
+      if (resto === 10 || resto === 11) resto = 0;
+      if (resto !== parseInt(cpf.substring(9, 10))) return false;
+      soma = 0;
+      for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+      resto = (soma * 10) % 11;
+      return resto === parseInt(cpf.substring(10, 11));
+    }
+
+    function toggleCamposExtras() {
+      const idade = parseInt(document.getElementById("idade").value);
+      const blocoResponsavel = document.getElementById("bloco_responsavel");
+      const campoCpfMaior = document.getElementById("campo_cpf_maior");
+
+      if (!isNaN(idade)) {
+        blocoResponsavel.style.display = idade < 18 ? "block" : "none";
+        campoCpfMaior.style.display = idade >= 18 ? "block" : "none";
+      }
+    }
+
+    function validarFormulario(event) {
+      const nome = document.getElementById("nome").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const idade = parseInt(document.getElementById("idade").value.trim());
+      const cpfMaior = document.getElementById("cpf_maior").value.trim();
+      const nomeResp = document.getElementById("nome_responsavel").value.trim();
+      const cpfResp = document.getElementById("cpf_responsavel").value.trim();
+
+      // Validação de nome completo
+      if (!/^\w+\s+\w+/.test(nome)) {
+        alert("Por favor, informe seu nome completo.");
+        event.preventDefault();
+        return false;
+      }
+
+      // Validação de e-mail
+      if (!/^[\w-.]+@[\w-]+\.[a-z]{2,}$/.test(email)) {
+        alert("Por favor, informe um e-mail válido.");
+        event.preventDefault();
+        return false;
+      }
+
+      // Maior de idade precisa ter CPF válido
+      if (idade >= 18 && !validarCPF(cpfMaior)) {
+        alert("CPF inválido para participante maior de idade.");
+        event.preventDefault();
+        return false;
+      }
+
+      // Menor de idade precisa de responsável válido
+      if (idade < 18) {
+        if (!/^\w+\s+\w+/.test(nomeResp)) {
+          alert("Informe o nome completo do responsável.");
+          event.preventDefault();
+          return false;
+        }
+        if (!validarCPF(cpfResp)) {
+          alert("CPF do responsável inválido.");
+          event.preventDefault();
+          return false;
+        }
+      }
+    }
+  </script>
 </head>
 <body>
   <div class="container">
     <img src="assets/logo_forms.png" alt="Logo BloxVerso Con" class="logo" />
     <h1>Formulário de Inscrição</h1>
-    <form name="inscricao" method="POST" data-netlify="true" action="/obrigado.html">
+    <form name="inscricao" method="POST" data-netlify="true" action="/obrigado.html" onsubmit="validarFormulario(event)">
       <input type="hidden" name="form-name" value="inscricao" />
 
       <label for="nome">Nome completo*</label>
@@ -29,8 +99,21 @@
         <option value="Outro">Outro</option>
       </select>
 
-      <label for="idade">Idade ou faixa etária*</label>
-      <input type="text" id="idade" name="idade" required />
+      <label for="idade">Idade*</label>
+      <input type="number" id="idade" name="idade" required oninput="toggleCamposExtras()" min="1" max="120" />
+
+      <div id="campo_cpf_maior" style="display: none;">
+        <label for="cpf_maior">CPF do participante*</label>
+        <input type="text" id="cpf_maior" name="cpf_maior" placeholder="Apenas para maiores de idade" />
+      </div>
+
+      <div id="bloco_responsavel" style="display: none;">
+        <label for="nome_responsavel">Nome completo do responsável legal*</label>
+        <input type="text" id="nome_responsavel" name="nome_responsavel" />
+        
+        <label for="cpf_responsavel">CPF do responsável legal*</label>
+        <input type="text" id="cpf_responsavel" name="cpf_responsavel" />
+      </div>
 
       <label for="whatsapp">WhatsApp (opcional)</label>
       <input type="text" id="whatsapp" name="whatsapp" />
@@ -47,7 +130,7 @@
       <div class="checkbox-container">
         <label>
           <input type="checkbox" name="consentimento" required />
-          Autorizo o uso das informações fornecidas exclusivamente para fins de personalização da experiência no evento BloxVerso Con, conforme política de privacidade.
+          Autorizo o uso das informações fornecidas exclusivamente para fins de personalização da experiência no evento BloxVerso Con.
         </label>
       </div>
 
