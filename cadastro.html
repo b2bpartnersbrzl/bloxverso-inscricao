@@ -8,31 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/imask"></script>
   <style>
-    .erro-campo {
-      color: #ff4c4c;
-      font-size: 13px;
-      margin-top: -12px;
-      margin-bottom: 12px;
-      display: none;
-      text-align: left;
-    }
-    input.erro {
-      border: 1px solid #ff4c4c !important;
-    }
     input:focus, select:focus {
       box-shadow: 0 0 0 2px #ffe60088;
       transition: box-shadow 0.2s ease;
     }
-    #mensagem-envio {
-      margin-top: 10px;
-      font-size: 14px;
-      display: none;
-    }
-    .info-topo {
-      text-align: left;
-      margin-bottom: 20px;
-      font-size: 14px;
-      color: #ccc;
+    input.erro {
+      border: 1px solid #ff4c4c !important;
     }
   </style>
   <script>
@@ -59,25 +40,17 @@
         if (idade < 18) {
           blocoResponsavel.style.display = "block";
           campoCpfMaior.style.display = "none";
+          document.getElementById("cpf_maior").value = "";
         } else {
           blocoResponsavel.style.display = "none";
           campoCpfMaior.style.display = "block";
+          document.getElementById("nome_responsavel").value = "";
+          document.getElementById("cpf_responsavel").value = "";
         }
       }
     }
 
-    function limparErros() {
-      const campos = document.querySelectorAll("input");
-      campos.forEach(campo => campo.classList.remove("erro"));
-      const erros = document.querySelectorAll(".erro-campo");
-      erros.forEach(e => e.style.display = "none");
-    }
-
     function validarFormulario(event) {
-      toggleCamposExtras(); // 👈 Força atualização visual antes da validação
-      limparErros();
-      document.getElementById("mensagem-envio").style.display = "none";
-
       const nome = document.getElementById("nome").value.trim();
       const email = document.getElementById("email").value.trim();
       const idade = parseInt(document.getElementById("idade").value.trim());
@@ -87,79 +60,61 @@
 
       const regexNomeCompleto = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
 
-      let erro = false;
-
       if (!regexNomeCompleto.test(nome)) {
-        erro = true;
-        document.getElementById("nome").classList.add("erro");
-        document.getElementById("erro_nome").style.display = "block";
+        alert("Por favor, informe seu nome completo.");
+        document.getElementById("nome").focus();
+        event.preventDefault();
+        return false;
       }
 
       if (!/^[\\w-.]+@[\\w-]+\\.[a-z]{2,}$/.test(email)) {
-        erro = true;
-        document.getElementById("email").classList.add("erro");
-        document.getElementById("erro_email").style.display = "block";
+        alert("Por favor, informe um e-mail válido.");
+        document.getElementById("email").focus();
+        event.preventDefault();
+        return false;
       }
 
-      if (idade >= 18) {
-        if (!validarCPF(cpfMaior)) {
-          erro = true;
-          document.getElementById("cpf_maior").classList.add("erro");
-          document.getElementById("erro_cpf_maior").style.display = "block";
-        }
+      if (idade >= 18 && !validarCPF(cpfMaior)) {
+        alert("CPF inválido para participante maior de idade.");
+        document.getElementById("cpf_maior").focus();
+        event.preventDefault();
+        return false;
       }
 
       if (idade < 18) {
         if (!regexNomeCompleto.test(nomeResp)) {
-          erro = true;
-          document.getElementById("nome_responsavel").classList.add("erro");
-          document.getElementById("erro_nome_resp").style.display = "block";
+          alert("Informe o nome completo do responsável.");
+          document.getElementById("nome_responsavel").focus();
+          event.preventDefault();
+          return false;
         }
         if (!validarCPF(cpfResp)) {
-          erro = true;
-          document.getElementById("cpf_responsavel").classList.add("erro");
-          document.getElementById("erro_cpf_resp").style.display = "block";
+          alert("CPF do responsável inválido.");
+          document.getElementById("cpf_responsavel").focus();
+          event.preventDefault();
+          return false;
         }
-      }
-
-      if (erro) {
-        event.preventDefault();
-        const primeiroErro = document.querySelector(".erro");
-        if (primeiroErro) {
-          primeiroErro.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      } else {
-        document.getElementById("botao-enviar").disabled = true;
-        document.getElementById("mensagem-envio").style.display = "block";
       }
     }
 
     document.addEventListener("DOMContentLoaded", function () {
       IMask(document.getElementById("cpf_maior"), { mask: '000.000.000-00' });
       IMask(document.getElementById("cpf_responsavel"), { mask: '000.000.000-00' });
-      toggleCamposExtras(); // 👈 Garante persistência visual ao recarregar
     });
   </script>
 </head>
 <body>
   <div class="container">
     <img src="assets/logo_forms.png" alt="Logo BloxVerso Con" class="logo" />
-    <div class="info-topo">
-      🔒 Seus dados são usados apenas para personalização da experiência no evento.<br />
-      ⏱ Leva menos de 1 minuto para preencher.
-    </div>
     <h1>Formulário de Inscrição</h1>
-
     <form name="inscricao" method="POST" data-netlify="true" action="/obrigado.html" onsubmit="validarFormulario(event)">
       <input type="hidden" name="form-name" value="inscricao" />
 
       <label for="nome">Nome completo*</label>
       <input type="text" id="nome" name="nome" required />
-      <div id="erro_nome" class="erro-campo">❗ Digite seu nome completo.</div>
 
       <label for="email">E-mail*</label>
       <input type="email" id="email" name="email" required />
-      <div id="erro_email" class="erro-campo">❗ Digite um e-mail válido.</div>
 
       <label for="perfil">Perfil do participante*</label>
       <select id="perfil" name="perfil" required>
@@ -175,18 +130,15 @@
 
       <div id="campo_cpf_maior" style="display: none;">
         <label for="cpf_maior">CPF do participante*</label>
-        <input type="text" id="cpf_maior" name="cpf_maior" />
-        <div id="erro_cpf_maior" class="erro-campo">❗ CPF inválido.</div>
+        <input type="text" id="cpf_maior" name="cpf_maior" placeholder="Apenas para maiores de idade" />
       </div>
 
       <div id="bloco_responsavel" style="display: none;">
         <label for="nome_responsavel">Nome completo do responsável legal*</label>
         <input type="text" id="nome_responsavel" name="nome_responsavel" />
-        <div id="erro_nome_resp" class="erro-campo">❗ Digite o nome completo do responsável.</div>
-
+        
         <label for="cpf_responsavel">CPF do responsável legal*</label>
         <input type="text" id="cpf_responsavel" name="cpf_responsavel" />
-        <div id="erro_cpf_resp" class="erro-campo">❗ CPF do responsável inválido.</div>
       </div>
 
       <label for="whatsapp">WhatsApp (opcional)</label>
@@ -208,8 +160,7 @@
         </label>
       </div>
 
-      <button id="botao-enviar" type="submit">Enviar inscrição</button>
-      <div id="mensagem-envio">⏳ Enviando sua inscrição…</div>
+      <button type="submit">Enviar inscrição</button>
     </form>
   </div>
 </body>
