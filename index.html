@@ -18,7 +18,6 @@
     function toggleLeiaMais() {
       const bloco = document.getElementById("texto-expandido");
       const link = document.getElementById("link-leia-mais");
-
       if (bloco.style.display === "none") {
         bloco.style.display = "block";
         link.innerText = "ocultar";
@@ -30,22 +29,20 @@
   </script>
 </head>
 <body>
-  <div class="container">
-    <div class="cabecalho">
-      <div class="coluna-logo">
-        <img src="assets/logo_forms.png" alt="Logo BloxVerso Con" class="logo-evento" />
-      </div>
-      <div class="coluna-apoio">
-        <p class="titulo-apoio">Tecnologia parceira:</p>
-        <div class="logos-tecnologia">
-          <a href="https://github.com" target="_blank"><img src="assets/github_logo.png" alt="GitHub" /></a>
-          <a href="https://www.netlify.com" target="_blank"><img src="assets/netlify_logo.png" alt="Netlify" /></a>
-        </div>
+  <header class="cabecalho">
+    <div class="coluna-logo">
+      <img src="assets/logo_forms.png" alt="Logo BloxVerso Con" class="logo-evento" />
+    </div>
+    <div class="coluna-apoio">
+      <p class="titulo-apoio">Tecnologias parceiras do Bloxverso</p>
+      <div class="logos-tecnologia">
+        <a href="https://github.com" target="_blank"><img src="assets/github_logo.png" alt="GitHub" /></a>
+        <a href="https://www.netlify.com" target="_blank"><img src="assets/netlify_logo.png" alt="Netlify" /></a>
       </div>
     </div>
+  </header>
 
-    <h1>Segurança em Primeiro Lugar</h1>
-
+  <div class="container">
     <p>
       O BloxVerso Con é um evento criado para reunir a comunidade Roblox em experiências seguras, criativas e inspiradoras. Nosso compromisso é claro: antes de oferecer entretenimento, oferecemos proteção...
       <span id="link-leia-mais" class="leia-mais" onclick="toggleLeiaMais()">leia mais...</span>
@@ -78,7 +75,7 @@
       <p>Se você concorda com nossos termos e entende a importância de um ambiente seguro para todos, siga para a pré-inscrição.</p>
     </div>
 
-    <a href="cadastro.html" class="btn">Fazer minha inscrição</a>
+    <a href="cadastro.html" class="btn">Fazer minha pré-inscrição</a>
   </div>
 </body>
 </html>
