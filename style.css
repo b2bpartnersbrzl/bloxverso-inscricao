@@ -93,13 +93,13 @@ footer {
   margin-top: 40px;
 }
 
-/* Cabeçalho com logo + selos */
+/* Cabeçalho com logo principal à esquerda e marcas empilhadas à direita */
 .cabecalho {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
   margin: 40px auto 20px auto;
   flex-wrap: wrap;
   max-width: 500px;
@@ -114,7 +114,7 @@ footer {
 .coluna-apoio {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
 }
 
@@ -127,12 +127,13 @@ footer {
 
 .logos-tecnologia {
   display: flex;
-  gap: 14px;
+  flex-direction: column;
+  gap: 8px;
   align-items: center;
 }
 
 .logos-tecnologia img {
-  height: 24px;
+  height: 29px; /* 20% maior que os 24px originais */
   opacity: 0.85;
   transition: opacity 0.3s ease;
 }
