@@ -28,9 +28,6 @@
       font-size: 14px;
       display: none;
     }
-    .icone {
-      margin-right: 6px;
-    }
     .info-topo {
       text-align: left;
       margin-bottom: 20px;
@@ -62,12 +59,9 @@
         if (idade < 18) {
           blocoResponsavel.style.display = "block";
           campoCpfMaior.style.display = "none";
-          document.getElementById("cpf_maior").value = "";
         } else {
           blocoResponsavel.style.display = "none";
           campoCpfMaior.style.display = "block";
-          document.getElementById("nome_responsavel").value = "";
-          document.getElementById("cpf_responsavel").value = "";
         }
       }
     }
@@ -90,7 +84,7 @@
       const nomeResp = document.getElementById("nome_responsavel").value.trim();
       const cpfResp = document.getElementById("cpf_responsavel").value.trim();
 
-      const regexNomeCompleto = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
+      const regexNomeCompleto = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(\\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
 
       let erro = false;
 
@@ -106,13 +100,17 @@
         document.getElementById("erro_email").style.display = "block";
       }
 
-      if (idade >= 18 && !validarCPF(cpfMaior)) {
-        erro = true;
-        document.getElementById("cpf_maior").classList.add("erro");
-        document.getElementById("erro_cpf_maior").style.display = "block";
+      if (idade >= 18) {
+        document.getElementById("campo_cpf_maior").style.display = "block";
+        if (!validarCPF(cpfMaior)) {
+          erro = true;
+          document.getElementById("cpf_maior").classList.add("erro");
+          document.getElementById("erro_cpf_maior").style.display = "block";
+        }
       }
 
       if (idade < 18) {
+        document.getElementById("bloco_responsavel").style.display = "block";
         if (!regexNomeCompleto.test(nomeResp)) {
           erro = true;
           document.getElementById("nome_responsavel").classList.add("erro");
