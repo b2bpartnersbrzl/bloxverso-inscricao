@@ -99,7 +99,7 @@ footer {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
   margin: 40px auto 20px auto;
   flex-wrap: wrap;
   max-width: 500px;
@@ -122,18 +122,18 @@ footer {
   font-size: 12px;
   color: #aaa;
   font-weight: bold;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 .logos-tecnologia {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
   align-items: center;
 }
 
 .logos-tecnologia img {
-  height: 29px; /* 20% maior que os 24px originais */
+  height: 35px;
   opacity: 0.85;
   transition: opacity 0.3s ease;
 }
@@ -145,7 +145,7 @@ footer {
 @media (max-width: 480px) {
   .cabecalho {
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
   }
 
   .logo-evento {
