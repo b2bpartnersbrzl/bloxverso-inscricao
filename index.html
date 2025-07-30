@@ -6,6 +6,28 @@
   <title>BloxVerso Con – Segurança</title>
   <link href="style.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    .leia-mais {
+      color: #ffe600;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function toggleLeiaMais() {
+      const bloco = document.getElementById("texto-expandido");
+      const link = document.getElementById("link-leia-mais");
+
+      if (bloco.style.display === "none") {
+        bloco.style.display = "block";
+        link.innerText = "ocultar";
+      } else {
+        bloco.style.display = "none";
+        link.innerText = "leia mais...";
+      }
+    }
+  </script>
 </head>
 <body>
   <div class="container">
@@ -13,32 +35,37 @@
 
     <h1>Segurança em Primeiro Lugar</h1>
 
-    <p>O BloxVerso Con é um evento criado para reunir a comunidade Roblox em experiências seguras, criativas e inspiradoras. Nosso compromisso é claro: antes de oferecer entretenimento, oferecemos proteção.</p>
+    <p>
+      O BloxVerso Con é um evento criado para reunir a comunidade Roblox em experiências seguras, criativas e inspiradoras. Nosso compromisso é claro: antes de oferecer entretenimento, oferecemos proteção...
+      <span id="link-leia-mais" class="leia-mais" onclick="toggleLeiaMais()">leia mais...</span>
+    </p>
 
-    <p>Sabemos que muitos dos participantes são menores de idade, e isso exige de nós total responsabilidade. Por isso, adotamos um sistema de pré-inscrição com camadas adicionais de segurança e validação.</p>
+    <div id="texto-expandido" style="display: none;">
+      <p>Sabemos que muitos dos participantes são menores de idade, e isso exige de nós total responsabilidade. Por isso, adotamos um sistema de pré-inscrição com camadas adicionais de segurança e validação.</p>
 
-    <h2>Por que o cadastro é detalhado?</h2>
-    <ul>
-      <li>Para proteger menores de perfis mal-intencionados</li>
-      <li>Para garantir que responsáveis legais sejam identificados, quando necessário</li>
-      <li>Para permitir a personalização da experiência conforme a faixa etária e perfil</li>
-      <li>Para cumprir boas práticas de segurança digital e privacidade de dados</li>
-    </ul>
+      <h2>Por que o cadastro é detalhado?</h2>
+      <ul>
+        <li>Para proteger menores de perfis mal-intencionados</li>
+        <li>Para garantir que responsáveis legais sejam identificados, quando necessário</li>
+        <li>Para permitir a personalização da experiência conforme a faixa etária e perfil</li>
+        <li>Para cumprir boas práticas de segurança digital e privacidade de dados</li>
+      </ul>
 
-    <h2>O que exigimos?</h2>
-    <ul>
-      <li>Nome completo e e-mail válido</li>
-      <li>Idade ou faixa etária precisa</li>
-      <li>Perfil do participante (jogador, criador, responsável etc.)</li>
-      <li>Aceite do uso dos dados exclusivamente para fins de personalização da experiência no evento</li>
-      <li>Nos casos de menores de 18 anos, será obrigatória a identificação do responsável legal</li>
-      <li>Participantes maiores de idade terão campos adicionais para garantir verificação reforçada</li>
-    </ul>
+      <h2>O que exigimos?</h2>
+      <ul>
+        <li>Nome completo e e-mail válido</li>
+        <li>Idade ou faixa etária precisa</li>
+        <li>Perfil do participante (jogador, criador, responsável etc.)</li>
+        <li>Aceite do uso dos dados exclusivamente para fins de personalização da experiência no evento</li>
+        <li>Nos casos de menores de 18 anos, será obrigatória a identificação do responsável legal</li>
+        <li>Participantes maiores de idade terão campos adicionais para garantir verificação reforçada</li>
+      </ul>
 
-    <h2>Como protegemos seus dados?</h2>
-    <p>Todos os dados enviados são tratados de forma confidencial, não são compartilhados com terceiros e são utilizados exclusivamente para fins organizacionais do BloxVerso Con.</p>
+      <h2>Como protegemos seus dados?</h2>
+      <p>Todos os dados enviados são tratados de forma confidencial, não são compartilhados com terceiros e são utilizados exclusivamente para fins organizacionais do BloxVerso Con.</p>
 
-    <p>Se você concorda com nossos termos e entende a importância de um ambiente seguro para todos, siga para a pré-inscrição.</p>
+      <p>Se você concorda com nossos termos e entende a importância de um ambiente seguro para todos, siga para a pré-inscrição.</p>
+    </div>
 
     <a href="cadastro.html" class="btn">Fazer minha inscrição</a>
   </div>
