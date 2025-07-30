@@ -16,16 +16,40 @@ body {
   text-align: center;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 30px auto;
+.logos-completas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo-principal {
   max-width: 384px;
   height: auto;
+  margin-bottom: 10px;
+}
+
+.apoios {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.apoio-logo {
+  height: 42px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.9;
+}
+
+.apoio-logo:hover {
+  transform: scale(1.05);
+  opacity: 1;
 }
 
 @media (max-width: 480px) {
-  .logo {
-    max-width: 240px; /* Reduz logo em telas pequenas */
+  .logo-principal {
+    max-width: 240px;
   }
 }
 
