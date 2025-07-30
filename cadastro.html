@@ -74,6 +74,7 @@
     }
 
     function validarFormulario(event) {
+      toggleCamposExtras(); // 👈 Força atualização visual antes da validação
       limparErros();
       document.getElementById("mensagem-envio").style.display = "none";
 
@@ -84,7 +85,7 @@
       const nomeResp = document.getElementById("nome_responsavel").value.trim();
       const cpfResp = document.getElementById("cpf_responsavel").value.trim();
 
-      const regexNomeCompleto = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(\\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
+      const regexNomeCompleto = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
 
       let erro = false;
 
@@ -101,7 +102,6 @@
       }
 
       if (idade >= 18) {
-        document.getElementById("campo_cpf_maior").style.display = "block";
         if (!validarCPF(cpfMaior)) {
           erro = true;
           document.getElementById("cpf_maior").classList.add("erro");
@@ -110,7 +110,6 @@
       }
 
       if (idade < 18) {
-        document.getElementById("bloco_responsavel").style.display = "block";
         if (!regexNomeCompleto.test(nomeResp)) {
           erro = true;
           document.getElementById("nome_responsavel").classList.add("erro");
@@ -138,6 +137,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       IMask(document.getElementById("cpf_maior"), { mask: '000.000.000-00' });
       IMask(document.getElementById("cpf_responsavel"), { mask: '000.000.000-00' });
+      toggleCamposExtras(); // 👈 Garante persistência visual ao recarregar
     });
   </script>
 </head>
