@@ -19,7 +19,7 @@ body {
 .logo {
   display: block;
   margin: 0 auto 30px auto;
-  max-width: 240px; /* Aumentado de 150px para 240px */
+  max-width: 384px; /* Aumentado duas vezes: 150px > 240px > 384px */
   height: auto;
 }
 
