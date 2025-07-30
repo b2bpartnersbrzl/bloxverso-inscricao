@@ -27,8 +27,16 @@
       const campoCpfMaior = document.getElementById("campo_cpf_maior");
 
       if (!isNaN(idade)) {
-        blocoResponsavel.style.display = idade < 18 ? "block" : "none";
-        campoCpfMaior.style.display = idade >= 18 ? "block" : "none";
+        if (idade < 18) {
+          blocoResponsavel.style.display = "block";
+          campoCpfMaior.style.display = "none";
+          document.getElementById("cpf_maior").value = "";
+        } else {
+          blocoResponsavel.style.display = "none";
+          campoCpfMaior.style.display = "block";
+          document.getElementById("nome_responsavel").value = "";
+          document.getElementById("cpf_responsavel").value = "";
+        }
       }
     }
 
@@ -40,30 +48,28 @@
       const nomeResp = document.getElementById("nome_responsavel").value.trim();
       const cpfResp = document.getElementById("cpf_responsavel").value.trim();
 
-      // Validação de nome completo
-      if (!/^\w+\s+\w+/.test(nome)) {
+      const regexNomeCompleto = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
+
+      if (!regexNomeCompleto.test(nome)) {
         alert("Por favor, informe seu nome completo.");
         event.preventDefault();
         return false;
       }
 
-      // Validação de e-mail
       if (!/^[\w-.]+@[\w-]+\.[a-z]{2,}$/.test(email)) {
         alert("Por favor, informe um e-mail válido.");
         event.preventDefault();
         return false;
       }
 
-      // Maior de idade precisa ter CPF válido
       if (idade >= 18 && !validarCPF(cpfMaior)) {
         alert("CPF inválido para participante maior de idade.");
         event.preventDefault();
         return false;
       }
 
-      // Menor de idade precisa de responsável válido
       if (idade < 18) {
-        if (!/^\w+\s+\w+/.test(nomeResp)) {
+        if (!regexNomeCompleto.test(nomeResp)) {
           alert("Informe o nome completo do responsável.");
           event.preventDefault();
           return false;
