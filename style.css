@@ -103,3 +103,36 @@ footer {
   color: #999;
   margin-top: 40px;
 }
+
+.logo-bloco {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.parceiros-tecnologia {
+  margin-top: 10px;
+}
+
+.titulo-apoio {
+  font-size: 14px;
+  color: #ccc;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.logos-tec {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.logos-tec img {
+  height: 28px;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.logos-tec img:hover {
+  opacity: 1;
+}
